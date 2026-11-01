@@ -32,7 +32,20 @@
       <button id="downloadPng" disabled>Скачать карту PNG</button>
       <button id="downloadStats" disabled>Скачать статистику CSV</button>
     </div>
-    <p class="hint">Для корректных уклонов DEM должна иметь горизонтальные координаты в метрах. Географические координаты в градусах автоматически не перепроецируются.</p>
+    <div class="controls">
+      <strong>Настройки Hillshade</strong>
+      <label>Азимут освещения: <span id="azimuthValue">315°</span>
+        <input id="azimuth" type="range" min="0" max="360" value="315">
+      </label>
+      <label>Высота солнца: <span id="sunAltitudeValue">45°</span>
+        <input id="sunAltitude" type="range" min="5" max="85" value="45">
+      </label>
+      <label>Контраст: <span id="shadeContrastValue">100%</span>
+        <input id="shadeContrast" type="range" min="20" max="180" value="100">
+      </label>
+    </div>
+    <p id="crsInfo" class="hint">Система координат будет определена после загрузки GeoTIFF.</p>
+    <p id="hintInfo" class="hint">Для EPSG:4326 приложение использует локальный перевод градусов в метры с учётом широты.</p>
   </section>
 
   <section class="panel">

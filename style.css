@@ -29,3 +29,7 @@ table{border-collapse:collapse;width:100%;font-size:13px}
 th,td{padding:9px;border-bottom:1px solid #e2e9eb;text-align:left}
 footer{text-align:center;padding:24px;color:#687a80;font-size:12px}
 @media(max-width:600px){.panel{padding:15px}header{padding:20px}.brand{font-size:23px}}
+
+.controls{margin-top:14px;padding:14px;background:#f3f7f8;border-radius:9px;display:grid;gap:10px}
+.controls label{display:grid;grid-template-columns:1fr auto;gap:6px;color:#52666e;font-size:13px}
+.controls input[type=range]{grid-column:1/-1;width:100%;accent-color:#176b62}
