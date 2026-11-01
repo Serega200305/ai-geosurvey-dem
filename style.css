@@ -1,0 +1,31 @@
+*{box-sizing:border-box}
+:root{font-family:Inter,Arial,sans-serif;color:#17232b;background:#eef3f5}
+body{margin:0}
+header{background:#173b45;color:white;padding:26px max(20px,calc((100% - 1100px)/2))}
+.brand{font-size:28px;font-weight:800}
+header p{margin:8px 0 0;color:#d7e6e8}
+main{max-width:1100px;margin:24px auto;padding:0 16px;display:grid;gap:18px}
+.panel{background:white;border:1px solid #d8e2e6;border-radius:14px;padding:20px;box-shadow:0 4px 18px #163b4510}
+h2{margin:0 0 16px;font-size:20px}
+.file-label{display:block;font-weight:650}
+input[type=file]{display:block;margin-top:10px;max-width:100%}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+button{border:0;border-radius:8px;padding:10px 14px;background:#176b62;color:white;font-weight:650;cursor:pointer}
+button:disabled{background:#aab8bc;cursor:not-allowed}
+button:hover:not(:disabled){background:#10544d}
+.muted,.hint{color:#60727a;font-size:13px;line-height:1.5}
+.hint{background:#f3f7f8;padding:10px;border-radius:8px}
+.map-wrap{width:100%;overflow:auto;background:#e9eff1;border-radius:8px;min-height:220px;display:flex;justify-content:center;align-items:center}
+#demCanvas{display:block;max-width:100%;height:auto;image-rendering:pixelated}
+#objectCanvas{display:block;max-width:100%;height:auto;margin-top:14px}
+.legend{margin-top:10px;color:#52666e;font-size:13px}
+.status{font-size:14px;color:#176b62;min-height:20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.stats div{background:#f2f6f7;padding:13px;border-radius:9px}
+.stats span{display:block;color:#63757c;font-size:12px}
+.stats strong{display:block;margin-top:6px;font-size:19px;overflow-wrap:anywhere}
+.table-wrap{overflow:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:9px;border-bottom:1px solid #e2e9eb;text-align:left}
+footer{text-align:center;padding:24px;color:#687a80;font-size:12px}
+@media(max-width:600px){.panel{padding:15px}header{padding:20px}.brand{font-size:23px}}

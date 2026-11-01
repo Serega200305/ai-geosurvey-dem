@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI GeoSurvey — анализ цифровой модели высот</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/geotiff@2.1.3/dist-browser/geotiff.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.17.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js"></script>
+</head>
+<body>
+<header>
+  <div class="brand">⛰️ AI GeoSurvey</div>
+  <p>Учебная система анализа цифровых моделей высот и распознавания объектов</p>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>1. Загрузка данных</h2>
+    <label class="file-label">Цифровая модель высот GeoTIFF (.tif / .tiff)
+      <input id="demFile" type="file" accept=".tif,.tiff,image/tiff">
+    </label>
+    <p id="demInfo" class="muted">DEM ещё не загружена.</p>
+    <div class="actions">
+      <button id="showElevation" disabled>Карта высот</button>
+      <button id="showSlope" disabled>Уклоны</button>
+      <button id="showAspect" disabled>Экспозиция</button>
+      <button id="showHillshade" disabled>Hillshade</button>
+    </div>
+    <div class="actions">
+      <button id="downloadPng" disabled>Скачать карту PNG</button>
+      <button id="downloadStats" disabled>Скачать статистику CSV</button>
+    </div>
+    <p class="hint">Для корректных уклонов DEM должна иметь горизонтальные координаты в метрах. Географические координаты в градусах автоматически не перепроецируются.</p>
+  </section>
+
+  <section class="panel">
+    <h2>2. Карта рельефа</h2>
+    <div class="map-wrap"><canvas id="demCanvas"></canvas></div>
+    <div id="legend" class="legend">Загрузите GeoTIFF, чтобы увидеть карту.</div>
+    <p id="status" role="status" class="status">Ожидание файла.</p>
+  </section>
+
+  <section class="panel">
+    <h2>3. Статистика высот</h2>
+    <div class="stats">
+      <div><span>Минимум</span><strong id="minZ">—</strong></div>
+      <div><span>Максимум</span><strong id="maxZ">—</strong></div>
+      <div><span>Средняя</span><strong id="meanZ">—</strong></div>
+      <div><span>Перепад</span><strong id="rangeZ">—</strong></div>
+      <div><span>Размер растра</span><strong id="rasterSize">—</strong></div>
+      <div><span>Ячеек с данными</span><strong id="validCells">—</strong></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>4. Распознавание обычных объектов на изображении</h2>
+    <p class="hint">Это отдельный демонстрационный модуль из предыдущего проекта. Он работает с обычными изображениями/ортофотопланами, но COCO-SSD не распознаёт геодезические условные знаки и не является специализированной моделью рельефа.</p>
+    <label class="file-label">Изображение для распознавания
+      <input id="objectFile" type="file" accept="image/*">
+    </label>
+    <div class="actions"><button id="detectObjects" disabled>Найти объекты</button></div>
+    <canvas id="objectCanvas"></canvas>
+    <p id="objectStatus" class="status">Изображение не загружено.</p>
+    <div id="objectResults" class="table-wrap"></div>
+  </section>
+</main>
+
+<footer>AI GeoSurvey · Учебный проект · Обработка выполняется в браузере</footer>
+<script src="app.js"></script>
+</body>
+</html>
